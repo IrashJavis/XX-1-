@@ -3,31 +3,30 @@ name: Run Jest Tests
 on:
   push:
     branches:
-      - main  # 當 main 分支有 push 時觸發
+      - master  # 改为 master 分支
   pull_request:
     branches:
-      - main  # 當針對 main 分支創建 pull request 時觸發
+      - master  # 改为 master 分支
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # 使用 Ubuntu 作為運行環境
+    runs-on: ubuntu-latest  # 运行环境
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2  # 檢出代碼
+      uses: actions/checkout@v2  # 检出代码
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # 設置 Node.js 版本為 14
+        node-version: '14'  # 设置 Node.js 版本
 
     - name: Install dependencies
       run: |
-        npm install  # 安裝 npm 依賴
-        npm audit fix  # 修復依賴中的漏洞
-      working-directory: ./XX1  # 設置工作目錄為 XX1 目錄
+        npm install  # 安装 npm 依赖
+      working-directory: ./XX1  # 设置正确的工作目录
 
     - name: Run tests
       run: |
-        npm test  # 執行 Jest 測試
-      working-directory: ./XX1  # 設置工作目錄為 XX1 目錄
+        npm test  # 运行 Jest 测试
+      working-directory: ./XX1  # 设置正确的工作目录
